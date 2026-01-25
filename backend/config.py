@@ -26,4 +26,10 @@ class Config:
 
 config = Config()
 
-
+# Validate required settings at startup
+if not config.ANTHROPIC_API_KEY:
+    raise ValueError(
+        "ANTHROPIC_API_KEY not set. Please add it to your .env file:\n"
+        "  ANTHROPIC_API_KEY=your_key_here\n"
+        "Get your key at: https://console.anthropic.com/settings/keys"
+    )
